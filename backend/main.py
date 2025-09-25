@@ -6,10 +6,8 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.docstore.document import Document
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
 API_KEY = os.getenv("GOOGLE_API_KEY")
 if not API_KEY:
     raise ValueError("環境変数 GOOGLE_API_KEY が設定されていません。")
@@ -23,7 +21,7 @@ def create_knowledge_base(file_path):
     docs = [Document(page_content=t) for t in texts]
     return FAISS.from_documents(docs, HuggingFaceEmbeddings(model_name="all-mpnet-base-v2"))
 
-knowledge_base = create_knowledge_base("backend/persona.txt")
+knowledge_base = create_knowledge_base("Caustic.txt")
 system_message = SystemMessage(content="あなたはコースティックです。")
 
 app = FastAPI()

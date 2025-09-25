@@ -5,3 +5,9 @@ psycopg2==2.9.6
 python-dotenv==1.0.0
 SQLAlchemy==2.0.12
 faker==18.7.0
+sentence-transformers
+langchain
+langchain-community
+langchain-google-genai
+google-generativeai
+faiss-cpu
